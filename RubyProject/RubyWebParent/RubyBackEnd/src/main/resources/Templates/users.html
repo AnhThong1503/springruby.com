@@ -5,7 +5,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-<title>Home</title>
+<title>User Managerment</title>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
@@ -129,7 +129,7 @@
 						
 						
 						<td>
-							<a class="fa-solid fa-pen-to-square fa-2x icon-green" href=""></a>
+							<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"></a>
 							&nbsp; 
 							<a class="fa-solid fa-trash fa-2x icon-dark" href=""></a>
 						</td>

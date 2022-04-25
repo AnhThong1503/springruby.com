@@ -3,6 +3,8 @@ package com.ruby.admin.user;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import com.ruby.common.entity.Role;
 import com.ruby.common.entity.User;
 
 @Service
+@Transactional
 public class UserService {
 	@Autowired
 	private UserRepository userRepo;
@@ -88,6 +91,10 @@ public class UserService {
 		}
 
 		userRepo.deleteById(id);
+	}
+
+	public void updateUserEnabledStatus(Integer id, boolean enabled) {
+		userRepo.updateEnabledStatus(id, enabled);
 	}
 
 }

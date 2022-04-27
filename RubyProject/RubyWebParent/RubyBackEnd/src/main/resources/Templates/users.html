@@ -105,7 +105,7 @@
 							
 							<a th:if="${sortField == 'id'}"
 									class="text-white"
-									th:href="@{'/users/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${sortDir}}">
+									th:href="@{'/users/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">
 							User ID
 							</a>
 							<span th:if="${sortField == 'id'}"
@@ -123,7 +123,7 @@
 							
 							<a th:if="${sortField == 'email'}"
 								class="text-white"
-								th:href="@{'/users/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${sortDir}}">
+								th:href="@{'/users/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
 							E-mail
 							</a>
 							<span th:if="${sortField == 'email'}"

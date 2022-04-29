@@ -1,4 +1,4 @@
-package com.ruby.admin.user;
+package com.ruby.admin.user.controller;
 
 import java.io.IOException;
 
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ruby.admin.FileUploadUtil;
 import com.ruby.admin.security.RubyUserDetails;
+import com.ruby.admin.user.UserService;
 import com.ruby.common.entity.User;
 
 @Controller
@@ -29,7 +30,7 @@ public class AccountController {
 		User user = service.getByEmail(email);
 		model.addAttribute("user", user);
 
-		return "account_form";
+		return "users/account_form";
 	}
 
 	@PostMapping("/account/update")

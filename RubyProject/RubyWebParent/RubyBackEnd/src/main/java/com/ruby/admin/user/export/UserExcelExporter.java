@@ -14,7 +14,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.ruby.admin.user.AbstractExporter;
 import com.ruby.common.entity.User;
 
 public class UserExcelExporter extends AbstractExporter {

@@ -1,4 +1,4 @@
-package com.ruby.admin.user;
+package com.ruby.admin.user.export;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.ruby.admin.user.AbstractExporter;
 import com.ruby.common.entity.User;
 
 public class UserPDFExporter extends AbstractExporter {

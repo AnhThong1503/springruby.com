@@ -13,7 +13,7 @@ import com.ruby.common.entity.Category;
 public class CatagoryController {
 
 	@Autowired
-	private CatagoryService service;
+	private CategoryService service;
 
 	@GetMapping("/categories")
 	public String listAll(Model model) {
@@ -21,6 +21,18 @@ public class CatagoryController {
 		model.addAttribute("listCategories", listCategories);
 
 		return "categories/categories";
+	}
+
+	@GetMapping("/categories/new")
+	public String newCategory(Model model) {
+		List<Category> listCategories = service.listCategoriesUsedInForm();
+
+		model.addAttribute("category", new Category());
+		model.addAttribute("listCategories", listCategories);
+
+		model.addAttribute("pageTitle", "Create New Category");
+
+		return "categories/category_form";
 	}
 
 }

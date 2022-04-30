@@ -77,7 +77,7 @@
 					<tr th:each="user : ${listUsers}">
 						<td class="hideable-column">[[${user.id}]] </td>
 						<td>
-							<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-3x icon-silver"></span>
+							<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-8x icon-silver"></span>
 							<img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
 							style="width: 100px; height: 150px"/>
 						</td>
@@ -112,7 +112,7 @@
 		<div class="less-details">
 			<div th:each="user : ${listUsers}" class="row m-1">
 				<div class="col-4">
-					<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-3x icon-silver"></span>
+					<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-8x icon-silver"></span>
 					<img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
 					style="width: 100px; height: 150px"/>				
 				</div>

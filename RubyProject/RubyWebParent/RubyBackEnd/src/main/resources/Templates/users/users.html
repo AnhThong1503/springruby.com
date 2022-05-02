@@ -15,11 +15,7 @@
 			<a th:href="@{/users/export/pdf}" class="fa-solid fa-file-pdf fa-2x icon-dark"></a>
 		</div>
 		
-		<div th:if="${message != null}" class="alert alert-success text-center">
-			[[${message}]]
-		</div>	
-		
-		<div th:replace="fragments :: search_form('/users/page/1')"></div>
+		<div th:replace="fragments :: search_form_and_message('/users/page/1')"></div>
 
 		
 		<div class="full-details">
@@ -66,11 +62,10 @@
 						
 						
 						<td>
-							<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"></a>
+						
+							<div th:replace="fragments :: edit('user', '/users/edit/' + ${user.id})"></div>
 							&nbsp; 
-							<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/users/delete/' + ${user.id}}"
-							th:entityId="${user.id}"
-							title="Delete this user"></a>
+							<div th:replace="fragments :: delete('user', ${user.id}, '/users/edit/' + ${user.id}, true)"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -90,11 +85,9 @@
 					<div class="mt-2">
 						<div th:replace="fragments :: status(${user.enabled}, 'users', '/users/' + ${user.id})"></div>
 						&nbsp;
-						<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"></a>
+						<div th:replace="fragments :: edit('user', '/users/edit/' + ${user.id})"></div>
 						&nbsp; 
-						<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/users/delete/' + ${user.id}}"
-						th:entityId="${user.id}"
-						title="Delete this user"></a>
+						<div th:replace="fragments :: delete('user', ${user.id}, '/users/edit/' + ${user.id}, true)"></div>
 					</div>
 				</div>
 				<div>

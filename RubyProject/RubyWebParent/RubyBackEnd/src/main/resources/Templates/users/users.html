@@ -27,22 +27,22 @@
 				<thead class="thead-dark">
 					<tr>
 						<th class="hideable-column">
-							<th th:replace="fragments :: column_link('id', 'User ID', 'tag')" />
+							<th th:replace="fragments :: column_link('/users/', 'id', 'User ID', 'tag')" />
 						</th>
 						
 						<th>Photos</th>
 						
 						<th class="hideable-column">
-							<th th:replace="fragments :: column_link('email', 'Email', 'tag')" />
+							<th th:replace="fragments :: column_link('/users/', 'email', 'Email', 'tag')" />
 						</th>
 						
-						<th th:replace="fragments :: column_link('firstName', 'First Name', 'none')" />
+						<th th:replace="fragments :: column_link('/users/', 'firstName', 'First Name', 'none')" />
 	
-						<th th:replace="fragments :: column_link('lastName', 'Last Name', 'none')" />
+						<th th:replace="fragments :: column_link('/users/', 'lastName', 'Last Name', 'none')" />
 	
 						<th>Roles</th>
 	
-						<th th:replace="fragments :: column_link('enabled', 'Enabled', 'none')" />
+						<th th:replace="fragments :: column_link('/users/', 'enabled', 'Enabled', 'none')" />
 						
 						<th></th>
 					</tr>
@@ -61,13 +61,7 @@
 						<td>[[${user.roles}]] </td>
 						
 						<td>
-						<a th:if="${user.enabled == true}" class = "fa-solid fa-circle-check fa-2x icon-green" 
-						th:href="@{'/users/' + ${user.id} + '/enabled/false'}"
-						title="Disable this user"></a>
-						
-						<a th:if="${user.enabled == false}" class = "fa-solid fa-circle-check fa-2x icon-dark" 
-						th:href="@{'/users/' + ${user.id} + '/enabled/true'}"
-						title="Enable this user"></a>
+							<div th:replace="fragments :: status(${user.enabled}, 'users', '/users/' + ${user.id})"></div>
 						</td>
 						
 						
@@ -94,13 +88,7 @@
 					<div>[[${user.fullName}]]</div>
 					<div>[[${user.roles}]]</div>
 					<div class="mt-2">
-						<a th:if="${user.enabled == true}" class = "fa-solid fa-circle-check fa-2x icon-green" 
-						th:href="@{'/users/' + ${user.id} + '/enabled/false'}"
-						title="Disable this user"></a>
-
-						<a th:if="${user.enabled == false}" class = "fa-solid fa-circle-check fa-2x icon-dark" 
-						th:href="@{'/users/' + ${user.id} + '/enabled/true'}"
-						title="Enable this user"></a>
+						<div th:replace="fragments :: status(${user.enabled}, 'users', '/users/' + ${user.id})"></div>
 						&nbsp;
 						<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"></a>
 						&nbsp; 

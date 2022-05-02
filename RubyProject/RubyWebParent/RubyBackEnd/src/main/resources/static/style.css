@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 768px){
 	/* small screen */
-	div.full-details {display : none}
+	div.full-details {display : none;}
 	div.less-details {display : block;}
 }
 
@@ -24,7 +24,7 @@
 	/* medium screen (ipad mini) */
 	div.full-details {display : block;}
 	div.less-details {display : none;}
-	.hideable-column{display: none}
+	.hideable-column{display: none;}
 	
 }
 

@@ -25,10 +25,7 @@
 					<tr>
 						<th>ID</th>
 						<th>Category Image</th>
-						<th>
-							<a class="text-white" th:href="@{'/categories/page/' + ${pageNum} + '?sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Category Name</a>
-							<span th:class="${reverseSortDir == 'desc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
-						</th>
+						<th th:replace="fragments :: column_link('/categories/', 'name', 'Category Name', 'none')" />
 						<th class="hideable-column">Alias</th>
 						<th>Enabled</th>
 						<th></th>
@@ -44,13 +41,7 @@
 						<td class="hideable-column">[[${cat.alias}]] </td>
 						
 						<td>
-						<a th:if="${cat.enabled == true}" class = "fa-solid fa-circle-check fa-2x icon-green" 
-						th:href="@{'/categories/' + ${cat.id} + '/enabled/false'}"
-						title="Disable this Category"></a>
-						
-						<a th:if="${cat.enabled == false}" class = "fa-solid fa-circle-check fa-2x icon-dark" 
-						th:href="@{'/categories/' + ${cat.id} + '/enabled/true'}"
-						title="Enable this Category"></a>
+							<div th:replace="fragments :: status(${cat.enabled}, 'category', '/categories/' + ${cat.id})"></div>
 						</td>
 						
 						
@@ -69,7 +60,7 @@
 			</table>
 		</div>
 		
-		<div class="less-detail">
+		<div class="less-details">
 			<div th:each="cat : ${listCategories}" class="row m-1">
 				<div class="col-4">
 					<img th:src="@{${cat.imagePath}}" style="width: 100px; height: 150px" class="img-fluid"/>
@@ -77,13 +68,7 @@
 				<div class="col-8">
 					<div>[[${cat.name}]] </div>
 					<div class="mt-2">
-						<a th:if="${cat.enabled == true}" class = "fa-solid fa-circle-check fa-2x icon-green" 
-						th:href="@{'/categories/' + ${cat.id} + '/enabled/false'}"
-						title="Disable this Category"></a>
-						
-						<a th:if="${cat.enabled == false}" class = "fa-solid fa-circle-check fa-2x icon-dark" 
-						th:href="@{'/categories/' + ${cat.id} + '/enabled/true'}"
-						title="Enable this Category"></a>
+						<div th:replace="fragments :: status(${cat.enabled}, 'category', '/categories/' + ${cat.id})"></div>
 						&nbsp; 
 						<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/categories/edit/' + ${cat.id}}" title="Edit this Category"></a>
 						&nbsp; 

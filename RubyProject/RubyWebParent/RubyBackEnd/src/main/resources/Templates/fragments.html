@@ -19,9 +19,9 @@
 			<p>Ruby Control Panel - Copyright &copy; Ruby</p>
 		</div>
 
-	<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+	<th th:fragment="column_link(moduleURL, fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
 		<a	class="text-white"
-			th:href="@{'/users/page/' + ${currentPage} + '?sortField=' + ${fieldName}  + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+			th:href="@{${moduleURL} + 'page/' + ${currentPage} + '?sortField=' + ${fieldName}  + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
 		[[${columnLabel}]]
 		</a>
 		
@@ -102,5 +102,14 @@
 			</form>
 	</div>
 	
+	<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
+		<a th:if="${enabled == true}" class = "fa-solid fa-circle-check fa-2x icon-green" 
+		th:href="@{${entityURL} + '/enabled/false'}"
+		title="'Disable this ' + ${entityName}"></a>
+		
+		<a th:if="${enabled == false}" class = "fa-solid fa-circle-check fa-2x icon-dark" 
+		th:href="@{${entityURL} + '/enabled/true'}"
+		title="Enable this ' + ${entityName}"></a>
+	</div>
 </body>
 </html>

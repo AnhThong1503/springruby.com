@@ -23,12 +23,12 @@ import com.ruby.common.entity.Category;
 @Transactional
 public class CategoryService {
 
-	private static final int ROOT_CATEGORIES_PER_PAGE = 4;
+	public static final int ROOT_CATEGORIES_PER_PAGE = 4;
 
 	@Autowired
 	private CategoryRepository repo;
 
-	public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortDir) {
+	public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortDir, String keyword) {
 		Sort sort = Sort.by("name");
 
 		if (sortDir.equals("asc")) {
@@ -39,13 +39,29 @@ public class CategoryService {
 
 		Pageable pageable = PageRequest.of(pageNum - 1, ROOT_CATEGORIES_PER_PAGE, sort);
 
-		Page<Category> pageCategories = repo.findRootCategories(pageable);
+		Page<Category> pageCategories = null;
+
+		if (keyword != null && !keyword.isEmpty()) {
+			pageCategories = repo.search(keyword, pageable);
+		} else {
+			pageCategories = repo.findRootCategories(pageable);
+		}
+
 		List<Category> rootCategories = pageCategories.getContent();
 
 		pageInfo.setTotalElements(pageCategories.getTotalElements());
 		pageInfo.setTotalPages(pageCategories.getTotalPages());
 
-		return listHierachicalCategories(rootCategories, sortDir);
+		if (keyword != null && !keyword.isEmpty()) {
+			List<Category> searchRelust = pageCategories.getContent();
+			for (Category category : searchRelust) {
+				category.setHashChildren(category.getChildren().size() > 0);
+			}
+			return searchRelust;
+
+		} else {
+			return listHierachicalCategories(rootCategories, sortDir);
+		}
 	}
 
 	private List<Category> listHierachicalCategories(List<Category> rootCategories, String sortDir) {

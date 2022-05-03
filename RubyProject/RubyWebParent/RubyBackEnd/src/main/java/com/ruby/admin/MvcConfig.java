@@ -13,32 +13,25 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// Lấy hình ảnh người dùng
-		String dirName = "user-photos";
 
-		Path userPhotosDir = Paths.get(dirName);
-
-		String userPhotosPath = userPhotosDir.toFile().getAbsolutePath();
-
-		registry.addResourceHandler("/" + dirName + "/**").addResourceLocations("file:/" + userPhotosPath + "/");
+		exposeDirectory("user-photos", registry);
 
 		// Lấy hình ảnh loại sản phẩm
-		String categoryImagesName = "../category-images";
 
-		Path categoryImagesDir = Paths.get(categoryImagesName);
-
-		String categoryImagePath = categoryImagesDir.toFile().getAbsolutePath();
-
-		registry.addResourceHandler("/category-images/**").addResourceLocations("file:/" + categoryImagePath + "/");
+		exposeDirectory("../category-images", registry);
 
 		// Lấy hình ảnh thương hiệu sản phẩm
-		String brandLogosDirName = "../brand-logos";
 
-		Path brandLogosDir = Paths.get(brandLogosDirName);
+		exposeDirectory("../brand-logos", registry);
+	}
 
-		String brandLogosPath = brandLogosDir.toFile().getAbsolutePath();
+	private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {
+		Path path = Paths.get(pathPattern);
+		String absolutePath = path.toFile().getAbsolutePath();
 
-		registry.addResourceHandler("/brand-logos/**").addResourceLocations("file:/" + brandLogosPath + "/");
+		String logicalPath = pathPattern.replace("../", "") + "/**";
 
+		registry.addResourceHandler(logicalPath).addResourceLocations("file:/" + absolutePath + "/");
 	}
 
 }

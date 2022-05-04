@@ -43,4 +43,8 @@ public class ProductController {
 
 		return "products/product_form";
 	}
+
+	// @PostMapping("/products/save")
+	// public String saveProduct(Product product) {
+	// }
 }

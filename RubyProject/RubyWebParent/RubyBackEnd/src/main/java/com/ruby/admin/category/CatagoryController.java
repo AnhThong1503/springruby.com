@@ -118,7 +118,7 @@ public class CatagoryController {
 	}
 
 	@GetMapping("/categories/{id}/enabled/{status}")
-	public String updateUserEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
+	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
 			RedirectAttributes redirectAttributes) {
 		service.updateCategoryEnabledStatus(id, enabled);
 		String status = enabled ? "enabled" : "disabled";

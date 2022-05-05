@@ -4,14 +4,12 @@
 		});
 		
 		$("#fileImage").change(function(){
-			fileSize = this.files[0].size;
-			if(fileSize > 2048576){
-				this.setCustomValidity("You must choose an image less than 2MB!");
-				this.reportValidity();
-			}else{
-				this.setCustomValidity("");
-				showImageThumbnail(this);
+			if(!checkFileSize(this)){
+				return true;
 			}
+
+			showImageThumbnail(this);
+			
 		});
 	});
 	
@@ -25,7 +23,20 @@
 		reader.readAsDataURL(file);
 	}
 	
-		function showModalDialog(title, message){
+	function checkFileSize(fileInput){
+		fileSize = fileInput.files[0].size;
+		
+		if(fileSize > 2048576){
+			fileInput.setCustomValidity("You must choose an image less than 2MB!");
+			fileInput.reportValidity();
+			return false;
+		}else{
+			fileInput.setCustomValidity("");
+			return true;
+		}
+	}
+	
+	function showModalDialog(title, message){
 		$("#modalTitle").text(title);
 		$("#modalBody").text(message);
 		$("#modalDialog").modal();

@@ -111,4 +111,18 @@ public class ProductRepositoryTests {
 
 	}
 
+	@Test
+	public void testSaveProductWithDetails() {
+		Integer productId = 9;
+		Product product = repo.findById(productId).get();
+
+		product.addDetail("aaaa", "aaaa");
+		product.addDetail("bbbb", "bbbb");
+		product.addDetail("cccc", "cccc");
+
+		Product savedProduct = repo.save(product);
+
+		assertThat(savedProduct.getDetails()).isNotEmpty();
+	}
+
 }

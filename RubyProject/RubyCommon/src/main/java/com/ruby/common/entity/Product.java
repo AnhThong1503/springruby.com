@@ -1,6 +1,5 @@
 package com.ruby.common.entity;
 
-import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -263,7 +262,7 @@ public class Product {
 		this.images.add(new ProductImage(imageName, this));
 	}
 
-	@Transient
+	@javax.persistence.Transient
 	public String getMainImagePath() {
 		if (id == null || mainImage == null) {
 			return "/images/image-thumbnail.png";
@@ -275,4 +274,5 @@ public class Product {
 	public void addDetail(String name, String value) {
 		this.details.add(new ProductDetails(name, value, this));
 	}
+
 }

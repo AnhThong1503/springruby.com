@@ -28,7 +28,7 @@ function addNextDetailSection(){
 	
 	previousDivDetailSection.append(htmlLinkRemove);
 	
-	$("#input[name='detailNames']").last().focus();
+	$("input[name='detailNames']").last().focus();
 }
 
 function removeDetailSectionById(id){

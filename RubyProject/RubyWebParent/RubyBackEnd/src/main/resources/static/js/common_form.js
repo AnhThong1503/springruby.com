@@ -26,8 +26,8 @@
 	function checkFileSize(fileInput){
 		fileSize = fileInput.files[0].size;
 		
-		if(fileSize > 2048576){
-			fileInput.setCustomValidity("You must choose an image less than 2MB!");
+		if(fileSize > 1048576){
+			fileInput.setCustomValidity("You must choose an image less than 1MB!");
 			fileInput.reportValidity();
 			return false;
 		}else{

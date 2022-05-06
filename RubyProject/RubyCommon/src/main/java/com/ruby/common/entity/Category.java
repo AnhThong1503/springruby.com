@@ -43,6 +43,9 @@ public class Category {
 	public Category() {
 	}
 
+	@Column(name = "all_parent_ids", length = 256, nullable = true)
+	private String allParentIDs;
+
 	public static Category copyIdAndName(Category category) {
 		Category copyCategory = new Category();
 		copyCategory.setId(category.getId());
@@ -180,4 +183,17 @@ public class Category {
 	public String toString() {
 		return this.name;
 	}
+
+	public String getAllParentIDs() {
+		return allParentIDs;
+	}
+
+	public void setAllParentIDs(String allParentIDs) {
+		this.allParentIDs = allParentIDs;
+	}
+
+	public void setHasChildren(boolean hasChildren) {
+		this.hasChildren = hasChildren;
+	}
+
 }

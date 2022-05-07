@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ruby.common.entity.Product;
+import com.ruby.common.exception.ProductNotFoundException;
 
 @Service
 @Transactional

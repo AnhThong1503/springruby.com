@@ -1,4 +1,4 @@
-package com.ruby.admin.category;
+package com.ruby.common.exception;
 
 public class CategoryNotFoundException extends Exception {
 

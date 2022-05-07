@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ruby.common.entity.Category;
+import com.ruby.common.exception.CategoryNotFoundException;
 
 @Service
 @Transactional

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ruby.admin.FileUploadUtil;
 import com.ruby.common.entity.Category;
+import com.ruby.common.exception.CategoryNotFoundException;
 
 @Controller
 public class CatagoryController {

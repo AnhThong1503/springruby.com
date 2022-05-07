@@ -23,6 +23,7 @@ import com.ruby.admin.security.RubyUserDetails;
 import com.ruby.common.entity.Brand;
 import com.ruby.common.entity.Category;
 import com.ruby.common.entity.Product;
+import com.ruby.common.exception.ProductNotFoundException;
 
 @Controller
 public class ProductController {

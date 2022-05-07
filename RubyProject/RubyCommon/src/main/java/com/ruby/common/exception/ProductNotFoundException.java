@@ -1,4 +1,4 @@
-package com.ruby.admin.product;
+package com.ruby.common.exception;
 
 public class ProductNotFoundException extends Exception {
 

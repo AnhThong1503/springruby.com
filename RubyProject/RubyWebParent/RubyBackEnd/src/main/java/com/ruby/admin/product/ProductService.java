@@ -56,7 +56,6 @@ public class ProductService {
 	public Product save(Product product) {
 		if (product.getId() == null) {
 			product.setCreatedTime(new Date());
-
 		}
 
 		if (product.getAlias() == null || product.getAlias().isEmpty()) {

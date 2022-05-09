@@ -27,6 +27,10 @@ public class MvcConfig implements WebMvcConfigurer {
 		// Lấy hình ảnh sản phẩm
 
 		exposeDirectory("../product-images", registry);
+
+		// Lấy hình ảnh logo
+
+		exposeDirectory("../site-logo", registry);
 	}
 
 	private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {

@@ -1,0 +1,13 @@
+package com.ruby.admin.setting.state;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.ruby.common.entity.Country;
+import com.ruby.common.entity.State;
+
+public interface StateRepository extends CrudRepository<State, Integer> {
+
+	public List<State> findByCountryOrderByNameAsc(Country country);
+}

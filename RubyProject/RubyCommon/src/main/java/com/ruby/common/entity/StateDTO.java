@@ -1,4 +1,4 @@
-package com.ruby.admin.setting.state;
+package com.ruby.common.entity;
 
 public class StateDTO {
 

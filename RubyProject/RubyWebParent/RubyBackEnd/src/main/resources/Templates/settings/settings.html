@@ -36,20 +36,23 @@
 				<li class="nav-item">
 				  <a class="nav-link" data-toggle="tab" href="#mailTemplate" role="tab">Mail Templates</a>
 				</li>
+				<li class="nav-item">
+				  <a class="nav-link" data-toggle="tab" href="#payment" role="tab">Payment</a>
+				</li>				
 			</ul>
 			
 							<!-- Tab panes -->
 			<div class="tab-content">
 				<div class="tab-pane active p-3" id="general" role="tabpanel">
-				<div th:replace="settings/general :: content"></div>
+					<div th:replace="settings/general :: content"></div>
 				</div>
 				
 				<div class="tab-pane" id="countries" role="tabpanel">
-				<div th:replace="settings/countries :: content"></div>
+					<div th:replace="settings/countries :: content"></div>
 				</div>
 				
 				<div class="tab-pane" id="states" role="tabpanel">
-				<div th:replace="settings/states :: content"></div>
+					<div th:replace="settings/states :: content"></div>
 				</div>
 				
 				<div class="tab-pane p-3" id="mailServer" role="tabpanel">
@@ -58,7 +61,11 @@
 			
 				<div class="tab-pane p-3" id="mailTemplates" role="tabpanel">
 				
-				</div>				
+				</div>		
+				
+				<div class="tab-pane p-3" id="payment" role="tabpanel">
+				
+				</div>	
 			</div>
 		
 		</div>
@@ -78,6 +85,7 @@
 
 </div>
 <script th:src="@{/js/common_form.js}"></script>
+<script th:src="@{/js/common.js}"></script>
 <script th:src="@{/js/countries_setting.js}"></script>
 <script th:src="@{/js/states_setting.js}"></script>
 <script type="text/javascript">

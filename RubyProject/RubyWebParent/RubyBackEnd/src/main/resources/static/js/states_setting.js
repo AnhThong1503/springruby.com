@@ -54,9 +54,12 @@ function deleteState(){
 	
 	url = contextPath + "states/delete/" + stateId;
 	
-	$.get(url, function(){
-		$("#dropDownStates option[value='" + stateId + "']").remove();
-		changeFormStateToNew();
+	$.ajax({
+		type: 'DELETE',
+		url: url,
+		beforeSend: function(xhr){
+			xhr.setRequestHeader(csrfHeaderName, csrfValue);
+		}
 	}).done(function(){
 		showToastMessage("The State has been deleted");
 	}).fail(function(){

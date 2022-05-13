@@ -49,6 +49,18 @@ $(document).ready(function(){
 	})
 });
 
+
+function validateFormState(){
+	formState = document.getElementById("formState");
+	if(!formState.checkValidity()){
+		formState.reportValidity();
+		return false;
+	}
+	
+	return true;
+}
+
+
 function deleteState(){
 	stateId = dropDownStates.val();
 	
@@ -70,6 +82,11 @@ function deleteState(){
 }
 
 function updateState(){
+	
+	if(!validateFormState()){
+		return;
+	}	
+	
 	url = contextPath + "states/save";
 	stateId = dropDownStates.val();
 	stateName = fieldStatesName.val();
@@ -102,6 +119,12 @@ function updateState(){
 //done don't touch
 
 function addState(){
+	
+	if(!validateFormState()){
+		return;
+	}	
+		
+	
 	url = contextPath + "states/save";
 	stateName = fieldStatesName.val();
 

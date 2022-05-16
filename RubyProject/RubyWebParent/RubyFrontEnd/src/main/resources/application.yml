@@ -1,0 +1,45 @@
+server:
+  port: 80
+  ssl:
+    enabled: true
+    key-store: classpath:springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+ # servlet:
+ # context-path: /Ruby
+spring:
+  datasource:
+    password: Do@ncoso123456
+    url: jdbc:mysql://localhost:3306/rubydb
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+      
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 143292697271-6hirnk03kjlcv575nr4u686alusb9mv9.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
+          facebook:
+            client-id: 1037559360205925
+            client-secret: 7890c9d857aa6a326c1f611d1fc682ea
+            scope:
+            - email
+            - public_profile
+

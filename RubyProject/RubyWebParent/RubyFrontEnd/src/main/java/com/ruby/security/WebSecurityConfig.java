@@ -1,5 +1,6 @@
 package com.ruby.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,9 +12,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.ruby.security.oauth.CustomerOAuth2UserService;
+import com.ruby.security.oauth.OAuth2LoginSuccessHandler;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private CustomerOAuth2UserService oAuth2UserService;
+
+	@Autowired
+	private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+
+	@Autowired
+	private DatabaseLoginSuccessHandler databaseLoginHandler;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -23,8 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/customer").authenticated().anyRequest().permitAll().and().formLogin()
-				.loginPage("/login").usernameParameter("email").permitAll().and().logout().permitAll().and()
-				.rememberMe().key("1234567890_aBcDeFgHiJkLmNoPqRsTuVwXuZ").tokenValiditySeconds(14 * 24 * 60 * 60);
+				.loginPage("/login").usernameParameter("email").successHandler(databaseLoginHandler).permitAll().and()
+				.oauth2Login().loginPage("/login").userInfoEndpoint().userService(oAuth2UserService).and()
+				.successHandler(oAuth2LoginSuccessHandler).and().logout().permitAll().and().rememberMe()
+				.key("1234567890_aBcDeFgHiJkLmNoPqRsTuVwXuZ").tokenValiditySeconds(14 * 24 * 60 * 60);
 	}
 
 	@Override

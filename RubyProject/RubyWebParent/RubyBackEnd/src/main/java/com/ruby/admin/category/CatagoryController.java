@@ -60,6 +60,7 @@ public class CatagoryController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("startCount", startCount);
 		model.addAttribute("endCount", endCount);
+		model.addAttribute("moduleURL", "/categories");
 
 		model.addAttribute("listCategories", listCategories);
 		model.addAttribute("reverseSortDir", reverseSortDir);

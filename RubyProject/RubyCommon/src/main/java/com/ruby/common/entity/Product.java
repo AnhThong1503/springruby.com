@@ -302,4 +302,12 @@ public class Product {
 
 		return this.price;
 	}
+
+	public Product(Integer id) {
+		this.id = id;
+	}
+
+	public Product() {
+	}
+
 }

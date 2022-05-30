@@ -1,4 +1,4 @@
-package com.ruby.common.entity;
+package com.ruby.common.entity.product;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +18,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.ruby.common.entity.Brand;
+import com.ruby.common.entity.Category;
 
 @Entity
 @Table(name = "products")
@@ -65,12 +68,23 @@ public class Product {
 	@Column(name = "main_image", nullable = false)
 	private String mainImage;
 
+	public Product(String name) {
+		this.name = name;
+	}
+
 	public String getMainImage() {
 		return mainImage;
 	}
 
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
+	}
+
+	public Product(Integer id) {
+		this.id = id;
+	}
+
+	public Product() {
 	}
 
 	@ManyToOne
@@ -301,13 +315,6 @@ public class Product {
 		}
 
 		return this.price;
-	}
-
-	public Product(Integer id) {
-		this.id = id;
-	}
-
-	public Product() {
 	}
 
 }

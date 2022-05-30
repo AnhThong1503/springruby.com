@@ -13,8 +13,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ruby.admin.FileUploadUtil;
-import com.ruby.common.entity.Product;
-import com.ruby.common.entity.ProductImage;
+import com.ruby.common.entity.product.Product;
+import com.ruby.common.entity.product.ProductImage;
 
 public class ProductSaveHelper {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductSaveHelper.class);

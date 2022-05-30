@@ -6,6 +6,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.ruby.common.entity.product.Product;
+
 @Entity
 @Table(name = "cart_items")
 public class CartItem extends IdBasedEntity {

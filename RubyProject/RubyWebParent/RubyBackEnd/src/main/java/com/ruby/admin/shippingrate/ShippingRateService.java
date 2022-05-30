@@ -12,8 +12,8 @@ import com.ruby.admin.paging.PagingAndSortingHelper;
 import com.ruby.admin.product.ProductRepository;
 import com.ruby.admin.setting.country.CountryRepository;
 import com.ruby.common.entity.Country;
-import com.ruby.common.entity.Product;
 import com.ruby.common.entity.ShippingRate;
+import com.ruby.common.entity.product.Product;
 
 @Service
 @Transactional

@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ruby.common.entity.Product;
+import com.ruby.common.entity.product.Product;
 import com.ruby.common.exception.ProductNotFoundException;
 
 @Service

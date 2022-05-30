@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.ruby.admin.paging.SearchRepository;
-import com.ruby.common.entity.Product;
+import com.ruby.common.entity.product.Product;
 
 public interface ProductRepository extends SearchRepository<Product, Integer> {
 
@@ -31,4 +31,7 @@ public interface ProductRepository extends SearchRepository<Product, Integer> {
 			+ "OR p.brand.name LIKE %?3%" + "OR p.category.name LIKE %?3%)")
 	public Page<Product> searchInCategory(Integer categoryId, String categoryIdMatch, String keyword,
 			Pageable pageable);
+
+	@Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
+	public Page<Product> searchProductsByName(String keyword, Pageable pageable);
 }

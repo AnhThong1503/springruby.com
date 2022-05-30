@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ruby.admin.paging.PagingAndSortingHelper;
-import com.ruby.common.entity.Product;
+import com.ruby.common.entity.product.Product;
 import com.ruby.common.exception.ProductNotFoundException;
 
 @Service
@@ -115,5 +115,12 @@ public class ProductService {
 		} catch (NoSuchElementException ex) {
 			throw new ProductNotFoundException("Couldn't not find any product with ID " + id);
 		}
+	}
+
+	public void searchProducts(int pageNum, PagingAndSortingHelper helper) {
+		Pageable pageable = helper.createPageable(PRODUCTS_PER_PAGE, pageNum);
+		String keyword = helper.getKeyword();
+		Page<Product> page = repo.searchProductsByName(keyword, pageable);
+		helper.updateModelAttributes(pageNum, page);
 	}
 }

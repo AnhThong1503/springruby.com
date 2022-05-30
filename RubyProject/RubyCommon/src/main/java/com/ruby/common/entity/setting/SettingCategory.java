@@ -1,4 +1,4 @@
-package com.ruby.common.entity;
+package com.ruby.common.entity.setting;
 
 public enum SettingCategory {
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ruby.category.CategoryService;
 import com.ruby.common.entity.Category;
-import com.ruby.common.entity.Product;
+import com.ruby.common.entity.product.Product;
 import com.ruby.common.exception.CategoryNotFoundException;
 import com.ruby.common.exception.ProductNotFoundException;
 

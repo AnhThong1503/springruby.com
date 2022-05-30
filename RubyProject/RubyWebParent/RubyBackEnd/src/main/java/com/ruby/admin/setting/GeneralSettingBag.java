@@ -2,8 +2,8 @@ package com.ruby.admin.setting;
 
 import java.util.List;
 
-import com.ruby.common.entity.Setting;
-import com.ruby.common.entity.SettingBag;
+import com.ruby.common.entity.setting.Setting;
+import com.ruby.common.entity.setting.SettingBag;
 
 public class GeneralSettingBag extends SettingBag {
 

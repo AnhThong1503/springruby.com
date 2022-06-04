@@ -42,8 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/users/**", "/settings/**", "/countries/**", "/states/**")
-				.hasAuthority("Admin")
+		http.authorizeRequests().antMatchers("/states/list_by_country/**").hasAnyAuthority("Admin", "Salesperson")
+
+				.antMatchers("/users/**", "/settings/**", "/countries/**", "/states/**").hasAuthority("Admin")
 
 				.antMatchers("/catagories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
 
@@ -63,9 +64,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/products/detail/**", "/customers/detail/**")
 				.hasAnyAuthority("Admin", "Editor", "Salesperson", "Assistant")
 
+				.antMatchers("/customers/**", "/orders/**", "/get_shipping_cost", "/reports/**")
+				.hasAnyAuthority("Admin", "Salesperson")
+
+				.antMatchers("/orders_shipper/update/**").hasAuthority("Shipper")
+
+				.antMatchers("/reviews/**").hasAnyAuthority("Admin", "Assistant")
+
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").usernameParameter("email")
 				.permitAll().and().logout().permitAll().and().rememberMe().key("AbcDefgHijKlmnOpqrs_1234567890")
 				.tokenValiditySeconds(7 * 24 * 60 * 60);
+		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

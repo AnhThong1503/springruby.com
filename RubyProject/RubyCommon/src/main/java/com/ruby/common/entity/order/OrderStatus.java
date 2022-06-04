@@ -1,7 +1,6 @@
 package com.ruby.common.entity.order;
 
 public enum OrderStatus {
-
 	NEW {
 		@Override
 		public String defaultDescription() {

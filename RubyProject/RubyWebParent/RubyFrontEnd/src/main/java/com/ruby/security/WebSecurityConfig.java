@@ -36,7 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/account_details", "/update_account_details", "/cart", "/address_book")
+		http.authorizeRequests()
+				.antMatchers("/account_details", "/update_account_details", "/orders/**", "/cart", "/address_book/**",
+						"/checkout", "/place_order", "/reviews/**", "/process_paypal_order", "/write_review/**",
+						"/post_review")
 				.authenticated().anyRequest().permitAll().and().formLogin().loginPage("/login")
 				.usernameParameter("email").successHandler(databaseLoginHandler).permitAll().and().oauth2Login()
 				.loginPage("/login").userInfoEndpoint().userService(oAuth2UserService).and()

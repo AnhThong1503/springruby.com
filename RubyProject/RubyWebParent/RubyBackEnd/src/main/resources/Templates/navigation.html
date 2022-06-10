@@ -19,7 +19,7 @@
 				<div class = "collapse navbar-collapse" id="topNavbar">
 					<ul class = "navbar-nav">
 					 	
-					 	<!-- Vào trang quản lý User -->
+					 	
 						<th:block sec:authorize="hasAuthority('Admin')">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -30,7 +30,7 @@
 								</div>
 							</li>
 						</th:block>
-					 	<!-- Vào trang quản lý Loại sản phẩm -->
+					 	
 					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -42,7 +42,7 @@
 							</li>
 						</th:block>
 						
-					 	<!-- Vào trang quản lý thương hiệu sản phẩm -->
+					 	
 					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -54,76 +54,51 @@
 							</li>						
 						</th:block>
 						
-					 	<!-- Vào trang quản lý sản phẩm -->
+					 	
 					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown"
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown"
 								th:href="@{/products}">Products</a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" th:href="@{/products/new}"
+							<div class="dropdown-menu">
+								<a class="dropdown-item" th:href="@{/products/new}" 
 									sec:authorize="hasAnyAuthority('Admin', 'Editor')">Create New</a>
-									<a class="dropdown-item" th:href="@{/products}">View All</a>
-								</div>
-							</li>		
-						</th:block>
-						
-					 	<!-- Vào trang quản lý câu hỏi của khách hàng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
-						<li class="nav-item">
-							<a class="nav-link" th:href="@{/questions}">Questions</a>
+								<a class="dropdown-item" th:href="@{/products}">View All</a>
+								
+								<a class="dropdown-item" sec:authorize="hasAuthority('Admin')"
+									th:href="@{/reviews}">Reviews</a>
+							</div>
 						</li>
 						</th:block>
-								
-					 	<!-- Vào trang quản lý câu hỏi của khách hàng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Assistant')">
+						
+					 	<th:block sec:authorize="hasAuthority('Assistant')">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/reviews}">Reviews</a>
 						</li>
 						</th:block>
-																		
-					 	<!-- Vào trang quản lý khách hàng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+										
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/customers}">Customers</a>
 						</li>
-						</th:block>
 						
-					 	<!-- Vào trang quản lý phí giao hàng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/shipping_rates}">Shipping Rates</a>
 						</li>
 						</th:block>
 						
-					 	<!-- Vào trang quản lý đơn hàng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/orders}">Orders</a>
 						</li>
 						</th:block>
 						
-					 	<!-- Vào trang thống kê -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 						<li class="nav-item">
-							<a class="nav-link" th:href="@{/report}">Sales Report</a>
-						</li>
+							<a class="nav-link" th:href="@{/reports}">Sales Report</a>
+						</li>	
 						</th:block>
-								
-					 	<!-- Vào trang quản lý bài đăng -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-						<li class="nav-item">
-							<a class="nav-link" th:href="@{/articles}">Articles</a>
-						</li>
-						</th:block>
-					
-					 	<!-- Vào trang Menu -->
-					 	<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
-						<li class="nav-item">
-							<a class="nav-link" th:href="@{/menus}">Menus</a>
-						</li>
-						</th:block>
-							
-					 	<!-- Vào trang cài đặt -->
+					 	
+					 	
 						<li class="nav-item dropdown" sec:authorize="hasAuthority('Admin')">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" th:href="@{/settings}">Settings</a>
 							<div class="dropdown-menu">

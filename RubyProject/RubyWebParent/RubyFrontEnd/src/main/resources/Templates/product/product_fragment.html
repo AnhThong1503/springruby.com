@@ -13,18 +13,18 @@
 			<b>[[${product.name}]]</b>
 		</a>
 	</div>
-	<div th:if="${product.discountPercent <= 0}">
-		<div th:replace="product/product_fragment :: price_fragment(${product.price})"></div>
-	</div>
-	
-	<div th:if="${product.discountPercent > 0}">
-		<span style="font-size: larger; color: darkred"><div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div></span>
-		<del><div th:replace="product/product_fragment :: price_fragment(${product.price})"></div></del>
-	</div>
-	
 	<div>
-		&nbsp;
-	</div>					
+		<table>
+			<tr>
+				<td>
+					<input type="text" class="product-detail-rating-star" dir="ltr" data-size="xs"
+						th:value="${product.averageRating}"/>				
+				</td>
+				<td><small>[[${product.reviewCount}]]</small></td>
+			</tr>
+		</table>
+	</div>
+	<div th:replace="product/product_fragment :: product_price"></div>			
 </div>
 
 <div th:fragment="product_price" th:remove="tag">

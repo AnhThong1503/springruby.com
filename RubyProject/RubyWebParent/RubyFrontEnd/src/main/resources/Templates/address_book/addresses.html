@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Your Address Book', 'none')" />
+<head>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" th:href="@{/assets/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/tooplate-main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.css}">
+</head>
 <body>
 <div class="container-fluid" th:with="redirectedFromCheckoutPage = ${param.redirect != null && param.redirect[0] == 'checkout'}">
 	<div th:replace="navigation :: header_menu"></div>
-	<div th:replace="navigation :: search_nav"></div>
+	<br>
+	<br>
+	<br>
+	<div class="row" style="display: flex; justify-content: center">
+    	<div th:replace="navigation :: search_nav"></div>
+    </div>
 	
 	<div class="text-center">
 		<div><h2 th:text="${redirectedFromCheckoutPage} ? 'Choose a Shipping Address' : 'Your Address Book'"></h2></div>
@@ -97,6 +113,7 @@
 	</div>
 	<div>&nbsp;</div>
 	<div th:replace="fragments :: confirm_modal"></div>
+	<hr>
 	<div th:replace="navigation :: footer_menu"></div>
 </div>	
 <script type="text/javascript">
@@ -116,5 +133,13 @@
 		$("#confirmModal").modal();	
 	}	
 </script>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+<!-- Additional Scripts -->
+<script th:src="@{/assets/js/custom.js}"></script>
+<script th:src="@{/assets/js/owl.js}"></script>
 </body>
 </html>

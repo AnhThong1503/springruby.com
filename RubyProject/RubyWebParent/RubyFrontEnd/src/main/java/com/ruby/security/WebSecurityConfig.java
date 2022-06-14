@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/account_details", "/update_account_details", "/orders/**", "/cart", "/address_book/**",
 						"/checkout", "/place_order", "/reviews/**", "/process_paypal_order", "/write_review/**",
-						"/post_review")
+						"/post_review", "/assets/**", "/vendor/**")
 				.authenticated().anyRequest().permitAll().and().formLogin().loginPage("/login")
 				.usernameParameter("email").successHandler(databaseLoginHandler).permitAll().and().oauth2Login()
 				.loginPage("/login").userInfoEndpoint().userService(oAuth2UserService).and()
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+		web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**", "/assets/**", "/vendor/**");
 	}
 
 	@Override

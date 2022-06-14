@@ -35,4 +35,9 @@ public class MainController {
 		}
 		return "redirect:/";
 	}
+
+	@GetMapping("/contact")
+	public String viewContactPage() {
+		return "contact";
+	}
 }

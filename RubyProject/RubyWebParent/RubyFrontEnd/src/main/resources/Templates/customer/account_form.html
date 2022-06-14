@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: page_head('Your Account Details', 'none')" />
+<head>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" th:href="@{/assets/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/tooplate-main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.css}">
+</head>
 <body>
 <div class="container-fluid">
 	<div th:replace="navigation :: header_menu"></div>
 	<div>&nbsp;</div>
-
+	<br>
+	<br>
+	<div class="row" style="display: flex; justify-content: center">
+    	<div th:replace="navigation :: search_nav"></div>
+    </div>
 	<div class="text-center">
 		<h2>Your Account Details</h2>
 	</div>
@@ -135,7 +150,7 @@
 		</div>
 	</div>
 	</form>
-	
+	<hr>
 	<div>&nbsp;</div>
 	<div th:replace="navigation :: footer_menu"></div>
 </div>
@@ -143,5 +158,13 @@
 	contextPath = "[[@{/}]]";
 </script>
 <script type="text/javascript" th:src="@{/js/common_customer_form.js}"></script>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+<!-- Additional Scripts -->
+<script th:src="@{/assets/js/custom.js}"></script>
+<script th:src="@{/assets/js/owl.js}"></script>
 </body>
 </html>

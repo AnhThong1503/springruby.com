@@ -7,38 +7,88 @@
 	<link th:href="@{/star-rating/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
 	<script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
 </head>
+<head>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" th:href="@{/assets/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/tooplate-main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.css}">
+</head>
 <body>
-	<div class = "container-fluid">
-		<div th:replace="navigation :: header_menu"></div>
-		<div th:replace="navigation :: search_nav"></div>
+
+    <!-- Navigation -->
+    <div th:replace="navigation :: header_menu"></div>
+    <br>
+    <br>
+    <br>
+    <div class="row" style="display: flex; justify-content: center">
+    	<div th:replace="navigation :: search_nav"></div>
+    </div>
 		<div th:replace="breadcrumb :: content"></div>
 		
-		<div class="row text-center">
-			<th:block th:each="cat : ${category.children}">
+		<div class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Sub Categories</h1>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+            
+            <th:block th:each="cat : ${category.children}">
 				<div class="col" th:if="${cat.enabled == true}">
+					<div class="featured-item">
 					<a th:href="@{'/c/' + ${cat.alias}}">
-						<img th:src="@{${cat.imagePath}}" height="200px" width="100px"/>
+						<img th:src="@{${cat.imagePath}}" height="400px" width="300px"/>
 						<br/>
 						<b>[[${cat.name}]]</b>
 					</a>
+					</div>
+				</div>
+			</th:block>
+     
+			</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="featured-page">
+	<div class="container">
+      <div class="row">
+		<div class="col-md-4 col-sm-12">
+			<div class="section-heading">
+	           <div class="line-dec"></div>
+	           <h1>Product</h1>
+	         </div>
+         </div>
+         </div>
+         </div>
+         </div>
+		
+		<div class="featured container no-gutter">
+        <div class="row posts">
+			<th:block th:each="product : ${listProducts}">
+			<div class="item new col-md-4">
+			<div class="featured-item">
+				<div th:replace="product/product_fragment ::content"></div>
+				</div>
 				</div>
 			</th:block>
 		</div>
-		
-		<div class="row">
-			&nbsp;
-		</div>
-		
-		<div class="row">
-			<th:block th:each="product : ${listProducts}">
-				<div th:replace="product/product_fragment ::content"></div>
-			</th:block>
 		</div>
 		
 		<div th:replace="fragments :: pagination('/c/' + ${category.alias}, 'product')"></div>
-		
+		<hr>
 		<div th:replace="navigation :: footer_menu"></div>
-	</div>
+
 </body>
 <script type="text/javascript">	
 	$(".product-detail-rating-star").rating({
@@ -48,4 +98,12 @@
 		theme: 'krajee-svg'
 	});
 </script>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+<!-- Additional Scripts -->
+<script th:src="@{/assets/js/custom.js}"></script>
+<script th:src="@{/assets/js/owl.js}"></script>
 </html>

@@ -67,13 +67,11 @@
 			<table class="table table-bordered table-striped table-hover table-responsive-xl">
 				<thead class="thead-dark">
 					<tr>
-						<th class="hideable-column">
-							<th th:replace="fragments :: column_link('id', 'ID', 'tag')" />
-						</th>
+						<th th:replace="fragments :: column_link('name', 'Product Name', 'none')" />
 						
 						<th>Main Image</th>
 						
-						<th th:replace="fragments :: column_link('name', 'Product Name', 'none')" />
+						
 						
 						<th class="hideable-column">
 							<th th:replace="fragments :: column_link('brand', 'Brand', 'tag')" />
@@ -91,12 +89,6 @@
 				</thead>
 				<tbody>
 					<tr th:each="product : ${listProducts}">
-						<td class="hideable-column">[[${product.id}]] </td>
-						
-						<td>
-							<img th:src="@{${product.mainImagePath}}" style="width:300px; height: 200px" class="img-fluid" />
-						</td>
-						
 						<td>
 							<a class="link-detail" 
 							th:href="@{'/products/detail/' + ${product.id}}"
@@ -104,6 +96,12 @@
 								[[${product.name}]]
 							</a>
 						</td>
+						
+						<td>
+							<img th:src="@{${product.mainImagePath}}" style="width:300px; height: 200px" class="img-fluid" />
+						</td>
+						
+						
 						
 						<td class="hideable-column">[[${product.brand.name}]]</td>
 						<td class="hideable-column">[[${product.category.name}]]</td>

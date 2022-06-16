@@ -23,7 +23,7 @@
     </div>
 	
 	<div class="text-center">
-		<div><h2 th:text="${redirectedFromCheckoutPage} ? 'Choose a Shipping Address' : 'Your Address Book'"></h2></div>
+		<div><h2 style="color: rgb(0, 128, 255);" th:text="${redirectedFromCheckoutPage} ? 'Choose a Shipping Address' : 'Your Address Book'"></h2></div>
 		<div>
 			<a th:unless="${param.redirect}" th:href="@{/address_book/new}" class="h4">Add New Address</a>
 			<a th:if="${redirectedFromCheckoutPage}" th:href="@{/address_book/new(redirect=checkout)}" class="h4">Add New Address</a>

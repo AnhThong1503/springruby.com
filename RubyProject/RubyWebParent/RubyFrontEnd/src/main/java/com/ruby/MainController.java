@@ -19,12 +19,12 @@ public class MainController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@GetMapping("")
-	public String viewHomePage(Model model) {
+	@GetMapping("/product_index")
+	public String viewProductPage(Model model) {
 		List<Category> listCategories = categoryService.listNoChildrenCategories();
 		model.addAttribute("listCategories", listCategories);
 
-		return "index";
+		return "product_index";
 	}
 
 	@GetMapping("/login")
@@ -39,5 +39,10 @@ public class MainController {
 	@GetMapping("/contact")
 	public String viewContactPage() {
 		return "contact";
+	}
+
+	@GetMapping("")
+	public String viewHomePage(Model model) {
+		return "index";
 	}
 }

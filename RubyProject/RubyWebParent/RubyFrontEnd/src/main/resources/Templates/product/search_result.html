@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments :: page_head(${pageTitle}, 'none')"/>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="fragments :: page_head(${pageTitle}, 'tag')" />
+	<link th:href="@{/star-rating/css/star-rating.css}" media="all" rel="stylesheet" type="text/css" />
+	<script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+	<link th:href="@{/star-rating/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
+	<script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+</head>
+<head>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" th:href="@{/assets/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/tooplate-main.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.css}">
+</head>
 <body>
-	<div class = "container-fluid">
-		<div th:replace="navigation :: header_menu"></div>
-		<div th:replace="navigation :: search_nav"></div>
-		
-		<div th:if="${totalItems > 0}">
-			<h1>Search Results for '[[${keyword}]]' </h1>
-		</div>
-		
-		<div th:unless="${totalItems > 0}">
-			<h3>No match found for '[[${keyword}]]' </h3>
-		</div>	
-			
+
+	<div th:replace="navigation :: header_menu"></div>
+	<br>
+	<br>
+	<br>
+	<div class="row" style="display: flex; justify-content: center">
+    	<div th:replace="navigation :: search_nav"></div>
+    </div>
+    
+	<div class="featured-page">
+	<div class="container">
+	<div th:if="${totalItems > 0}">
 		<div class="row">
-			<th:block th:each="product : ${listResult}">
-				<div th:replace="product/product_fragment ::content"></div>
-			</th:block>
-		</div>
-		
-		<div th:replace="fragments :: pagination('/search', 'product')"></div>
-		
-		<div th:replace="navigation :: footer_menu"></div>
+		<div class="col-md-4 col-sm-12">
+			<div class="section-heading">
+	           
+	           <div class="line-dec"></div>
+	           <h1>Search Results for '[[${keyword}]]'</h1>
+	         </div>
+         </div>
+         </div>
 	</div>
+	<div th:unless="${totalItems > 0}">
+		<div class="row">
+		<div class="col-md-4 col-sm-12">
+			<div class="section-heading">
+	           <div class="line-dec"></div>
+	           <h1>No match found for '[[${keyword}]]'</h1>
+	         </div>
+         </div>
+         </div>
+	</div>
+	</div>
+		</div>
+	<div class="featured container no-gutter">
+        <div class="row posts">
+		<th:block th:each="product : ${listResult}">
+		<div class="item new col-md-4">
+			<div class="featured-item">
+				<div th:replace="product/product_fragment :: content"></div>
+			</div>
+			</div>
+		</th:block>
+	</div>
+	</div>
+	<div th:replace="fragments :: pagination('/search', 'product')"></div>
+	<hr>
+	<div th:replace="navigation :: footer_menu"></div>
+
+<script type="text/javascript">	
+	$(".product-detail-rating-star").rating({
+		displayOnly: true,
+		hoverOnClera: false,
+		showCaption: false,
+		theme: 'krajee-svg'
+	});
+</script>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+<!-- Additional Scripts -->
+<script th:src="@{/assets/js/custom.js}"></script>
+<script th:src="@{/assets/js/owl.js}"></script>
 </body>
 </html>

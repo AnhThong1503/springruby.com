@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-	<head th:replace="fragments :: page_head(${pageTitle}, 'tag')"/>
+	<head th:replace="fragments :: page_head('Edit Product', 'tag')"/>
 	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}"/>
 	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
 </head>
@@ -10,7 +10,7 @@
 		<div th:replace="navigation :: menu"></div>
 
 		<div>
-			<h2>Manage Products | [[${pageTitle}]]</h2>
+			<h2>Manage Products | Product Detail</h2>
 		</div>
 
 		<form th:action="@{/products/save}" method="post"
